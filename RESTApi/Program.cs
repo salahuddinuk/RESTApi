@@ -8,14 +8,12 @@ namespace RESTApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
             // setup app's root folders
             AppDomain.CurrentDomain.SetData("ContentRootPath", app.Environment.ContentRootPath);
             AppDomain.CurrentDomain.SetData("WebRootPath", app.Environment.WebRootPath);
@@ -26,12 +24,8 @@ namespace RESTApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
         }
     }
